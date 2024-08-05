@@ -1,0 +1,8 @@
+version: '3.8'
+
+name: search_engine
+services:
+  fastapi-app:
+    build: .
+    ports:
+      - "${APP_PORT:-8000}:8000"  # Use 8000 as the default port if APP_PORT is not set

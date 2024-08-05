@@ -1,2 +1,2 @@
-# tfid-search-engine
-A search engine based on TF-ID measure implemented in Python
+# tfidf-search-engine
+A search engine based on TF-IDF measure implemented in Python
