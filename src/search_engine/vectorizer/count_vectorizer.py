@@ -21,7 +21,7 @@ class CountVectorizer(AbstractVectorizer):
         """Generates (or updates) the document-term matrix based on the provided data
 
         Args:
-            data (list[tuple[str, str]]): Data on which to build the document-term matrix. The assumed format of the data is: ('document_content', 'document_name')
+            data (list[tuple[str, str]]): Data on which to build the document-term matrix. The assumed format of the data is: [('document_content', 'document_name'), ...]
         """
         word_column_indices = []
         sparse_matrix_data = []

@@ -4,16 +4,23 @@ from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel, constr
 from search_engine.tfidf_search_engine import TfidfSearchEngine
 
+
+
 # Document model
 class Document(BaseModel):
     content: constr(min_length=1)
     name: constr(min_length=1)
 
+# Global variables to be used by the endpoints
 global_variables = {}
+
+
 
 # This function will run before the app starts
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """This function prepares the dataset and initalizes the search engine before the app is started"""
+
     # (Down)Load the dataset
     newsgroup_dataset = NewsGroups20Dataset()
 
@@ -24,7 +31,12 @@ async def lifespan(app: FastAPI):
 
     global_variables.clear()
 
+
+
 app = FastAPI(lifespan=lifespan)
+
+
+#-------------------- Endpoints -----------------------------
 
 @app.get("/search")
 async def search(query: str = '', skip: int = 0, limit: int = 10) -> list[str]:
@@ -38,6 +50,7 @@ async def search(query: str = '', skip: int = 0, limit: int = 10) -> list[str]:
 @app.post("/documents")
 async def index_document(document: Document) -> Document:
     """Indexes a new document into the search engine"""
+    
     # Lowercase the document name
     name_to_be_indexed = document.name.lower()
     # Check if the document with the same name is already indexed
