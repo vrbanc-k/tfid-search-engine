@@ -8,6 +8,6 @@ class AbstractVectorizer(ABC):
         """Populates underlying data model based on the provided data
 
         Args:
-            data (list[tuple[str, str]]): Data on which the data model will be fitted. The assumed format of the data is: ('document_content', 'document_name')
+            data (list[tuple[str, str]]): Data on which the data model will be fitted. The assumed format of the data is: [('document_content', 'document_name'), ...]
         """
         pass

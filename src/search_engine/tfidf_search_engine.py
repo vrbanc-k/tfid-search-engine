@@ -6,12 +6,16 @@ from .vectorizer.tfidf_vectorizer import TfidfVectorizer
 class TfidfSearchEngine:
     """Represents a class that uses TF-IDF scores to return the most relevant documents for particular terms"""
 
+
+
     def __init__(self) -> None:
         """Initializes the class variables"""
 
         print(f'{'-'*5} Initializing the search engine {'-'*5}')
         # Initialize a TF-IDF vactorizer
         self.tfidf_vectorizer = TfidfVectorizer()
+
+
 
     def check_if_document_is_indexed(self, document_name: str) -> bool:
         """Checks whether the document with the provided name is already indexed in the search engine
@@ -50,7 +54,8 @@ class TfidfSearchEngine:
             num_of_results_to_skip (int, optional): A number of the most relevant documents to skip. Defaults to 0.
 
         Returns:
-            list[str]: The 'num_of_results' most relevant documents
+            list[str]: The #num_of_results most relevant documents
+
         """
         # Split the search query into words
         search_query_words = word_tokenize(search_query.lower())
