@@ -6,6 +6,7 @@ from search_engine.tfidf_search_engine import TfidfSearchEngine
 
 
 
+
 # Document model
 class Document(BaseModel):
     content: constr(min_length=1)
